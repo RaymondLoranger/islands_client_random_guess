@@ -21,7 +21,7 @@ defmodule Islands.Client.RandomGuess.MixProject do
 
   defp description do
     """
-    Makes a random guess in the _Game of Islands_.
+    Makes a random guess in the Game of Islands.
     """
   end
 
