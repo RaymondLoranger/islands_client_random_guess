@@ -14,8 +14,8 @@ defmodule Islands.Client.RandomGuess do
   alias Islands.Client.State
   alias Islands.{Coord, Tally}
 
-  @board_range 1..10
-  @board_set Application.get_env(@app, :gen_board_set).(@board_range)
+  @coord_range 1..10
+  @board_set Application.get_env(@app, :gen_board_set).(@coord_range)
 
   @dialyzer {:nowarn_function, new: 1}
   @spec new(State.t()) :: String.t()
