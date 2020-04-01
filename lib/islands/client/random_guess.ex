@@ -18,7 +18,7 @@ defmodule Islands.Client.RandomGuess do
   @board_set Application.get_env(@app, :gen_board_set).(@coord_range)
 
   @dialyzer {:nowarn_function, new: 1}
-  @spec new(State.t()) :: String.t()
+  @spec new(State.t() | Tally.t()) :: String.t() | 1..100
   def new(%State{tally: %Tally{guesses: guesses}} = _state) do
     %Coord{row: row, col: col} =
       @board_set
@@ -27,5 +27,15 @@ defmodule Islands.Client.RandomGuess do
       |> Enum.random()
 
     "#{row} #{col}"
+  end
+
+  def new(%Tally{guesses: guesses} = _tally) do
+    %Coord{row: row, col: col} =
+      @board_set
+      |> MapSet.difference(guesses.hits)
+      |> MapSet.difference(guesses.misses)
+      |> Enum.random()
+
+    (row - 1) * 10 + col
   end
 end
