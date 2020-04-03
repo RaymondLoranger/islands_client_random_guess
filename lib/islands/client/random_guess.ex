@@ -17,25 +17,23 @@ defmodule Islands.Client.RandomGuess do
   @coord_range 1..10
   @board_set Application.get_env(@app, :gen_board_set).(@coord_range)
 
-  @dialyzer {:nowarn_function, new: 1}
-  @spec new(State.t() | Tally.t()) :: String.t() | 1..100
-  def new(%State{tally: %Tally{guesses: guesses}} = _state) do
-    %Coord{row: row, col: col} =
-      @board_set
-      |> MapSet.difference(guesses.hits)
-      |> MapSet.difference(guesses.misses)
-      |> Enum.random()
+  @type square :: 1..100
 
-    "#{row} #{col}"
+  @dialyzer {:nowarn_function, new: 1}
+  @spec new(State.t() | Tally.t()) :: String.t() | square
+  def new(%State{tally: %Tally{guesses: guesses}} = _state) do
+    @board_set
+    |> MapSet.difference(guesses.hits)
+    |> MapSet.difference(guesses.misses)
+    |> Enum.random()
+    |> Coord.to_row_col()
   end
 
   def new(%Tally{guesses: guesses} = _tally) do
-    %Coord{row: row, col: col} =
-      @board_set
-      |> MapSet.difference(guesses.hits)
-      |> MapSet.difference(guesses.misses)
-      |> Enum.random()
-
-    (row - 1) * 10 + col
+    @board_set
+    |> MapSet.difference(guesses.hits)
+    |> MapSet.difference(guesses.misses)
+    |> Enum.random()
+    |> Coord.to_square()
   end
 end
