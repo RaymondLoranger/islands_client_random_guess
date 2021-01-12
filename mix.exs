@@ -4,8 +4,8 @@ defmodule Islands.Client.RandomGuess.MixProject do
   def project do
     [
       app: :islands_client_random_guess,
-      version: "0.1.13",
-      elixir: "~> 1.7",
+      version: "0.1.14",
+      elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Client Random Guess",
       source_url: source_url(),
@@ -44,15 +44,14 @@ defmodule Islands.Client.RandomGuess.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mix_tasks,
-       github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
-      {:persist_config, "~> 0.2", runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
+      {:islands_client_state, "~> 0.1"},
       {:islands_coord, "~> 0.1"},
       {:islands_tally, "~> 0.1"},
-      {:islands_client_state, "~> 0.1"},
-      {:earmark, "~> 1.0", only: :dev},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
-      {:dialyxir, "~> 0.5", only: :dev, runtime: false}
+      {:mix_tasks,
+       github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
+      {:persist_config, "~> 0.4", runtime: false}
     ]
   end
 end

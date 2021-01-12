@@ -2,20 +2,18 @@
 # │ Inspired by the course "Elixir for Programmers" by Dave Thomas. │
 # └─────────────────────────────────────────────────────────────────┘
 defmodule Islands.Client.RandomGuess do
-  use PersistConfig
-
-  @course_ref Application.get_env(@app, :course_ref)
-
   @moduledoc """
   Makes a random guess in the _Game of Islands_.
-  \n##### #{@course_ref}
+
+  ##### Inspired by the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
+
+  use PersistConfig
 
   alias Islands.Client.State
   alias Islands.{Coord, Tally}
 
-  @coord_range 1..10
-  @board_set Application.get_env(@app, :gen_board_set).(@coord_range)
+  @board_set get_env(:board_set)
 
   @type square :: 1..100
 
