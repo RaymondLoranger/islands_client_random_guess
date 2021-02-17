@@ -4,7 +4,7 @@ defmodule Islands.Client.RandomGuess.MixProject do
   def project do
     [
       app: :islands_client_random_guess,
-      version: "0.1.23",
+      version: "0.1.24",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Client Random Guess",
@@ -46,9 +46,13 @@ defmodule Islands.Client.RandomGuess.MixProject do
     [
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      {:islands_client_state, "~> 0.1", runtime: false},
+      # To please dialyzer only...
+      {:islands_client_state, "~> 0.1"},
+      # {:islands_client_state, "~> 0.1", runtime: false},
       {:islands_coord, "~> 0.1"},
-      {:islands_tally, "~> 0.1", runtime: false},
+      # To please dialyzer only...
+      {:islands_tally, "~> 0.1"},
+      # {:islands_tally, "~> 0.1", runtime: false},
       {:persist_config, "~> 0.4", runtime: false}
     ]
   end
