@@ -55,6 +55,7 @@ defmodule Islands.Client.RandomGuess.MixProject do
       # To allow mix release of :islands_vue_client...
       {:islands_client_state, "~> 0.1", runtime: false},
       {:islands_tally, "~> 0.1", runtime: false},
+      
       {:persist_config, "~> 0.4", runtime: false}
     ]
   end
