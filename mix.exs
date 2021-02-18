@@ -49,13 +49,12 @@ defmodule Islands.Client.RandomGuess.MixProject do
       {:islands_coord, "~> 0.1"},
 
       # To please dialyzer...
-      {:islands_client_state, "~> 0.1"},
-      {:islands_tally, "~> 0.1"},
+      # {:islands_client_state, "~> 0.1"},
+      # {:islands_tally, "~> 0.1"},
 
       # To allow mix release of :islands_vue_client...
-      # {:islands_client_state, "~> 0.1", runtime: false},
-      # {:islands_tally, "~> 0.1", runtime: false},
-
+      {:islands_client_state, "~> 0.1", runtime: false},
+      {:islands_tally, "~> 0.1", runtime: false},
       {:persist_config, "~> 0.4", runtime: false}
     ]
   end
