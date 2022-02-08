@@ -3,7 +3,7 @@
 # └─────────────────────────────────────────────────────────────────┘
 defmodule Islands.Client.RandomGuess do
   @moduledoc """
-  Makes a random guess in the _Game of Islands_.
+  Returns a random guess in the _Game of Islands_.
 
   ##### Inspired by the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
@@ -13,12 +13,18 @@ defmodule Islands.Client.RandomGuess do
   alias Islands.Client.State
   alias Islands.{Coord, Tally}
 
-  @board_set get_env(:board_set)
+  @board_set (for row <- 1..10, col <- 1..10, into: MapSet.new() do
+                Islands.Coord.new!(row, col)
+              end)
 
-  @type square :: 1..100
+  @doc """
+  Returns a random guess in the _Game of Islands_.
+  """
+  @dialyzer {:no_opaque, new: 1}
+  @dialyzer {:no_return, new: 1}
+  @spec new(State.t() | Tally.t()) :: String.t() | Coord.square()
+  def new(client_state_or_tally)
 
-  @dialyzer {:nowarn_function, new: 1}
-  @spec new(State.t() | Tally.t()) :: String.t() | square
   def new(%State{tally: %Tally{guesses: guesses}} = _state) do
     @board_set
     |> MapSet.difference(guesses.hits)

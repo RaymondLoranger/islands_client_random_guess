@@ -1,6 +1,6 @@
 # Islands Client Random Guess
 
-Makes a random guess in the _Game of Islands_.
+Returns a random guess in the _Game of Islands_.
 
 ## Installation
 
