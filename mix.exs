@@ -4,7 +4,7 @@ defmodule Islands.Client.RandomGuess.MixProject do
   def project do
     [
       app: :islands_client_random_guess,
-      version: "0.1.29",
+      version: "0.1.30",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Client Random Guess",
