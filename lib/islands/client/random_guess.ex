@@ -13,7 +13,9 @@ defmodule Islands.Client.RandomGuess do
   alias Islands.Client.State
   alias Islands.{Coord, Tally}
 
-  @board_set (for row <- 1..10, col <- 1..10, into: MapSet.new() do
+  @col_range 1..10
+  @row_range 1..10
+  @board_set (for row <- @row_range, col <- @col_range, into: MapSet.new() do
                 Islands.Coord.new!(row, col)
               end)
 
